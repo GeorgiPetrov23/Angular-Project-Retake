@@ -15,4 +15,10 @@ export class ApiService {
 
     return this.http.get<Recipe[]>(`${apiUrl}/recipes`);
   }
+
+  getSingleRecipe(id: string){
+    const {apiUrl} = environment;
+
+    return this.http.get<Recipe>(`${apiUrl}/recipes/${id}`)
+  }
 }

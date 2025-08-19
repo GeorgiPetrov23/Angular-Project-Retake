@@ -4,7 +4,7 @@
             <img [src]="recipe.imageUrl"
                 alt="">
             <h3>{{recipe.title}}</h3>
-            <a class="detail-btn" href="#">Details</a>
+            <a class="detail-btn" [routerLink]="recipe._id">Details</a>
         </div>
     }
 <!-- </div> -->
