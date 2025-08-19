@@ -13,7 +13,7 @@ import { RegisterComponent } from "./user/register/register.component";
 
 @Component({
   selector: 'app-root',
-  imports: [HeaderComponent, FooterComponent, HomeComponent],
+  imports: [HeaderComponent, FooterComponent, CatalogComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
   standalone: true

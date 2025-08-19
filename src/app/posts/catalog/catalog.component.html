@@ -1,9 +1,10 @@
 <!-- <div class="container"> -->
-
-    <div class="catalog-post">
-        <img src="https://i.ytimg.com/vi/OlcMgfSW0mc/hq720.jpg?sqp=-oaymwEXCK4FEIIDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLAwsRqMU8EMCRd7PKl1OPnSts-j0A"
-            alt="">
-        <h3>Some text</h3>
-        <a class="detail-btn" href="#">Details</a>
-    </div>
+    @for (recipe of recipes; track $index) {
+        <div class="catalog-post">
+            <img [src]="recipe.imageUrl"
+                alt="">
+            <h3>{{recipe.title}}</h3>
+            <a class="detail-btn" href="#">Details</a>
+        </div>
+    }
 <!-- </div> -->
