@@ -55,15 +55,20 @@
 }
 
 .edit-btn {
-    background-color: #2196f3;
-    color: white;
+    margin-right: 50px;
+    background-color: #f59e0b;
+    color: black;
 }
 
 .delete-btn {
-    background-color: #f44336;
-    color: white;
+    background-color: #f59e0b;
+    color: black;
 }
 
 .edit-btn, .delete-btn, .like-btn:hover {
     opacity: 0.9;
 }
+
+/* .container{
+    margin: 0 auto;
+} */

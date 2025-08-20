@@ -8,6 +8,7 @@ import { DetailsComponent } from './posts/details/details.component';
 import { CreatePostComponent } from './posts/create-post/create-post.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { AuthGuard } from './guards/auth.guard';
+import { EditPostComponent } from './posts/edit-post/edit-post.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -21,7 +22,8 @@ export const routes: Routes = [
     //Recipe routing
     {path: 'recipes', children: [
         {path: '', component: CatalogComponent},
-        {path: ':recipeId', component: DetailsComponent}
+        {path: ':recipeId', component: DetailsComponent},
+        {path: ':recipeId/edit', component: EditPostComponent},
     ]},
     {path: 'create', component: CreatePostComponent, canActivate: [AuthGuard]},
 

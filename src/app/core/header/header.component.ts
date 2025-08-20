@@ -9,7 +9,7 @@ import { UserService } from '../../user/user.service';
   styleUrl: './header.component.css'
 })
 export class HeaderComponent {
-    get isLoggedIn(): boolean{
+  get isLoggedIn(): boolean{
     return this.userService.isLogged;
   }
 
@@ -21,7 +21,7 @@ export class HeaderComponent {
 
   logout(){
     this.userService.logout().subscribe(() => {
-      this.router.navigate(['/home']);
+      this.router.navigate(['/login']);
     })
   }
 }

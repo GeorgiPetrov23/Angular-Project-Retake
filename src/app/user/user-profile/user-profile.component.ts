@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-user-profile',
@@ -8,5 +9,12 @@ import { Component } from '@angular/core';
   standalone: true
 })
 export class UserProfileComponent {
+  get username(): string{
+    return this.userService.user?.username || '';
+  }
+  get email(): string{
+    return this.userService.user?.email || '';
+  }
 
+  constructor(private userService: UserService) {}
 }

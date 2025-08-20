@@ -3,14 +3,18 @@
     <div class="recipe-info">
         <h2>Title: {{recipe.title}}</h2>
         <div class="ingredients">
-            Ingredients: 
+            Ingredients:
             <ul>
                 @for (ingredient of recipe.ingredients; track $index) {
-                    <li>{{ingredient}}</li>
+                <li>{{ingredient}}</li>
                 }
             </ul>
         </div>
         <h2>Instructions:</h2>
         <p>{{recipe.instructions}}</p>
+        @if(isOwner){
+        <button class="edit-btn" [routerLink]="['/recipes', recipe._id, 'edit']">Edit</button>
+        <button class="delete-btn" (click)="deleteRecipe()">Delete</button>
+        }
     </div>
 </div>

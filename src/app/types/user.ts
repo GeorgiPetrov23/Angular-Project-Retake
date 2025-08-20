@@ -1,6 +1,11 @@
 export interface User{
-    id: string,
+    _id: string,
     email: string,
     username: string,
     password: string,
+}
+
+export interface createdBy{
+    username: string,
+    id: string
 }

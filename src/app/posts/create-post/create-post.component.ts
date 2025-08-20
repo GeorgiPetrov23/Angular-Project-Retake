@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ApiService } from '../../api.service';
 import { FormControl, FormGroup, NgForm, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ingredientsValidator } from '../../utils/ingredients-format.validator';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-post',
@@ -12,7 +13,7 @@ import { ingredientsValidator } from '../../utils/ingredients-format.validator';
 })
 export class CreatePostComponent {
 
-  constructor(private apiService: ApiService) {}
+  constructor(private apiService: ApiService, private router: Router) {}
 
   form = new FormGroup({
     title: new FormControl('', [Validators.required]),
@@ -27,9 +28,8 @@ export class CreatePostComponent {
     console.log(this.form.value);
     console.log(this.form.invalid);
     console.log(this.form.errors);
-    // this.apiService.createPost(this.form.value.title as string, ingredientsArr as string[], this.form.value.instructions as string, this.form.value.imageUrl as string).subscribe((data) => {
-    //   console.log('pomosht');
-    //   console.log(data);
-    // })
+    this.apiService.createPost(this.form.value.title as string, ingredientsArr as string[], this.form.value.instructions as string, this.form.value.imageUrl as string).subscribe(() => {
+      this.router.navigate(['/recipes']);
+    })
   }
 }
