@@ -41,11 +41,6 @@ label{
     font-size: 1em;
     transition: background-color 0.3s ease;
 }
-
-.login-form button:hover {
-    background-color: #d97706;
-}
-
 .login-form .signup {
     text-align: center;
     margin-top: 15px;
@@ -56,4 +51,8 @@ label{
 }
 .signup a:hover {
     color: rgb(228, 148, 0);
+}
+
+.error{
+    color: red;
 }

@@ -21,4 +21,15 @@ export class ApiService {
 
     return this.http.get<Recipe>(`${apiUrl}/recipes/${id}`)
   }
+
+  createPost(title: string, ingredients: string[], instructions: string, imageUrl: string){
+    const {apiUrl} = environment;
+    const payload = {
+      title,
+      ingredients,
+      instructions,
+      imageUrl
+    }
+    return this.http.post<Recipe>(`${apiUrl}api/recipes`, payload);
+  }
 }

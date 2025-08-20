@@ -1,15 +1,15 @@
 <form class="recipe-form" action="">
     <label for="Name">Name of the recipe:</label>
-    <input type="text" name="nameOfRecipe">
+    <input type="text" name="nameOfRecipe" #inputNameOfRecipe>
 
     <label for="ingredients">Ingredients: </label>
-    <input type="text" name="ingredients">
+    <input type="text" name="ingredients" #inputIngredients>
 
     <label for="description">Instructions</label>
-    <textarea name="" id="" rows="4"></textarea>
+    <textarea name="" id="" rows="4" #inputInstructions></textarea>
 
     <label for="image">Image URL: </label>
-    <input type="url" name="image">
+    <input type="url" name="image" #inputImageUrl>
 
     <button>Post</button>
 </form>
