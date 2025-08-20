@@ -1,16 +1,64 @@
-<form class="register-form" method="">
+<form class="register-form" [formGroup]="form" (ngSubmit)="register()">
     <label for="username">Username:</label>
-    <input type="text" id="username" name="username" value="">
+    <input type="text" id="username" name="username" formControlName="username">
+
+    @if(form.get('username')?.touched){
+    @if(form.get('username')?.errors?.['required']){
+    <p class="error">
+        Username is required!
+    </p>
+    }
+    }
 
     <label for="email">Email:</label>
-    <input type="email" id="email" name="email" value="">
+    <input type="email" id="email" name="email" formControlName="email">
 
-    <label for="password">Password:</label>
-    <input type="password" id="password" name="password">
+    @if(form.get('email')?.touched){
+    <div>
+        @if(form.get('email')?.errors?.['required']){
+        <p class="error">
+            Email is required!
+        </p>
+        }
+        @if(form.get('email')?.errors?.['emailValidator']){
+        <p class="error">
+            Email is not valid!
+        </p>
+        }
+    </div>
+    }
 
-    <label for="confirm-password">Confirm Password:</label>
-    <input type="password" id="rePassword" name="rePassword">
+    <div formGroupName="passGroup">
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" formControlName="password">
 
-    <button type="submit">Register</button>
+        @if(passGroup?.get('password')?.touched){
+        <div>
+            @if(passGroup?.get('password')?.errors?.['required']){
+            <p class="error">
+                Password is required!
+            </p>
+            }
+            @if(passGroup?.get('password')?.errors?.['minlength']){
+            <p class="error">
+                Password must be at least 5 characters!
+            </p>
+            }
+        </div>
+        }
+
+        <label for="confirm-password">Confirm Password:</label>
+        <input type="password" id="rePassword" name="rePassword" formControlName="rePassword">
+
+        @if(passGroup?.get('rePassword')?.touched){
+        <div>
+            @if(passGroup?.errors?.['matchPasswordsValidator'] || passGroup?.get('rePassword')?.errors?.['required']){
+            <p class="error">Repeat Password does not match password!</p>
+            }
+        </div>
+        }
+    </div>
+
+    <button [disabled]="form.invalid" [style]="{backgroundColor: form.invalid ? 'grey' : '#f59e0b'}">Register</button>
     <p class="login">Already have an account? <a routerLink="/login">Login here</a></p>
 </form>

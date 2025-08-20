@@ -51,3 +51,7 @@
 .login a:hover {
     color: #d97706;
 }
+
+.error{
+    color: red
+}
