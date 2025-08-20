@@ -7,6 +7,7 @@ import { CatalogComponent } from './posts/catalog/catalog.component';
 import { DetailsComponent } from './posts/details/details.component';
 import { CreatePostComponent } from './posts/create-post/create-post.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
+import { AuthGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
     { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -22,7 +23,7 @@ export const routes: Routes = [
         {path: '', component: CatalogComponent},
         {path: ':recipeId', component: DetailsComponent}
     ]},
-    {path: 'create', component: CreatePostComponent},
+    {path: 'create', component: CreatePostComponent, canActivate: [AuthGuard]},
 
     {path: '404', component: ErrorPageComponent},
     {path: '**', redirectTo: '/404'}
