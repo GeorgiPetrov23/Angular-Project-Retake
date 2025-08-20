@@ -27,9 +27,9 @@ export class CreatePostComponent {
     console.log(this.form.value);
     console.log(this.form.invalid);
     console.log(this.form.errors);
-    // this.apiService.createPost(title, ingredientsArr, instructions, imageUrl).subscribe((data) => {
+    // this.apiService.createPost(this.form.value.title as string, ingredientsArr as string[], this.form.value.instructions as string, this.form.value.imageUrl as string).subscribe((data) => {
     //   console.log('pomosht');
-    //   // console.log(data);
+    //   console.log(data);
     // })
   }
 }

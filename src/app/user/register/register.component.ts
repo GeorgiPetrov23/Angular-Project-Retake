@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from "@angular/forms";
 import { UserService } from '../user.service';
 import { emailValidator } from '../../utils/email.validator';
@@ -14,6 +14,8 @@ import { matchPasswordsValidator } from '../../utils/match-passwords.validator';
   standalone: true
 })
 export class RegisterComponent {
+
+  constructor(private userService: UserService, private router: Router) {} 
 
   form = new FormGroup({
     username: new FormControl('', [Validators.required]),
@@ -31,7 +33,11 @@ export class RegisterComponent {
   }
 
   register() {
-    console.log(this.form.invalid);
-    console.log(this.form.value);
+    const {username, email, passGroup:{password, rePassword} = {}} = this.form.value;
+    this.userService.register(username!, email!, password!, rePassword!).subscribe(() =>{
+      this.router.navigate(['/recipes']);
+    })
   }
+
+
 }

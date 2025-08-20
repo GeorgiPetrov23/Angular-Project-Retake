@@ -18,8 +18,12 @@ export class LoginComponent {
     if(form.invalid){
       console.error("The form is invalid!");
       return;
-    }
-    this.userService.login();
-    this.router.navigate(['/home']);
+    };
+
+    const {email, password} = form.value;
+    this.userService.login(email, password).subscribe(() =>{
+      console.log();
+      this.router.navigate(['/recipes']);      
+    })
   }
 }

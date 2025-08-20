@@ -11,15 +11,14 @@ export class ApiService {
   constructor(private http: HttpClient) { }
 
   getRecipes(){
-    const {apiUrl} = environment;
 
-    return this.http.get<Recipe[]>(`${apiUrl}/recipes`);
+    return this.http.get<Recipe[]>(`/api/recipes`);
   }
 
   getSingleRecipe(id: string){
     const {apiUrl} = environment;
 
-    return this.http.get<Recipe>(`${apiUrl}/recipes/${id}`)
+    return this.http.get<Recipe>(`/api/recipes/${id}`)
   }
 
   createPost(title: string, ingredients: string[], instructions: string, imageUrl: string){
@@ -30,6 +29,6 @@ export class ApiService {
       instructions,
       imageUrl
     }
-    return this.http.post<Recipe>(`${apiUrl}api/recipes`, payload);
+    return this.http.post<Recipe>(`/api/recipes`, payload);
   }
 }
