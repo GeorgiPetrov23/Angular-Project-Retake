@@ -13,7 +13,7 @@
     }
 
     <label for="ingredients">Ingredients: </label>
-    <input type="text" name="ingredients" formControlName="ingredients">
+    <textarea type="text" name="ingredients" formControlName="ingredients" rows="4"></textarea>
 
     @if(form.get('ingredients')?.touched){
     <div>
@@ -24,7 +24,7 @@
         }
         @if(form.get('ingredients')?.errors?.['ingredientsValidator']){
         <p class="error">
-            Ingredients's format should be "ingredient, ingredient"!
+            Ingredients's format should be: "ingredient" - "weight"g, "ingredient" - "weight"g
         </p>
         }
     </div>
