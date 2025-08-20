@@ -1,15 +1,59 @@
-<form class="recipe-form" action="">
-    <label for="Name">Name of the recipe:</label>
-    <input type="text" name="nameOfRecipe" #inputNameOfRecipe>
+<form class="recipe-form" [formGroup]="form" (ngSubmit)="createPost()">
+    <label for="Name">Title:</label>
+    <input type="text" name="title" formControlName="title">
+
+    @if(form.get('title')?.touched){
+    <div>
+        @if(form.get('title')?.errors?.['required']){
+        <p class="error">
+            Title is required!
+        </p>
+        }
+    </div>
+    }
 
     <label for="ingredients">Ingredients: </label>
-    <input type="text" name="ingredients" #inputIngredients>
+    <input type="text" name="ingredients" formControlName="ingredients">
+
+    @if(form.get('ingredients')?.touched){
+    <div>
+        @if(form.get('ingredients')?.errors?.['required']){
+        <p class="error">
+            Ingredients is required!
+        </p>
+        }
+        @if(form.get('ingredients')?.errors?.['ingredientsValidator']){
+        <p class="error">
+            Ingredients's format should be "ingredient, ingredient"!
+        </p>
+        }
+    </div>
+    }
 
     <label for="description">Instructions</label>
-    <textarea name="" id="" rows="4" #inputInstructions></textarea>
+    <textarea name="instructions" id="" rows="4" formControlName="instructions"></textarea>
+
+    @if(form.get('instructions')?.touched){
+    <div>
+        @if(form.get('instructions')?.errors?.['required']){
+        <p class="error">
+            Instructions are required!
+        </p>
+        }
+    </div>
+    }
 
     <label for="image">Image URL: </label>
-    <input type="url" name="image" #inputImageUrl>
+    <input type="url" name="imageUrl" formControlName="imageUrl">
 
-    <button>Post</button>
+    @if(form.get('imageUrl')?.touched){
+    <div>
+        @if(form.get('imageUrl')?.errors?.['required']){
+        <p class="error">
+            Image Url is required!
+        </p>
+        }
+    </div>
+    }
+    <button [disabled]="form.invalid" [style]="{backgroundColor: form.invalid ? 'grey' : '#f59e0b'}">Post</button>
 </form>
